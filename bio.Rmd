@@ -1,5 +1,5 @@
 ---
-title: "Bio"
+title: "Curriculum Vitae"
 author: "Mateusz Krzysztof Łącki"
 date: "8/3/2017"
 output: html_document

@@ -1,8 +1,10 @@
 ---
 title: "The Life of Lacki"
 author: "Mateusz Krzysztof Łącki"
-date: "8/3/2017"
-output: html_document
+output: 
+  html_document:
+    theme: united
+    highlight: tango
 ---
 
 ```{r setup, include=FALSE}
@@ -11,21 +13,105 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Welcome to my webpage! 
 
+I am a PHD at the University of Warsaw, [Department of Mathematics, Informatics and Mechanics](https://www.mimuw.edu.pl). 
 
-## Our main concern is just making Mass Spectrometry great (again)!
+I am interested in developing  **Computational Mass Spectrometry**.
+
+Under the guidance of my tutors, [prof. Anna Gambin](https://www.mimuw.edu.pl/~aniag/) and [Błażej Miasojedow](https://mimuw.wikispaces.com/Miasojedow,+Błażej), 
+I have been developing algorithms and workflows for the analysis of mass spectrometric data. More specifically, we are interested in the study of mass spectra obtained with the use of Electron Transfer Reaction.  
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(rbokeh)
+library(tidyverse)
+path_to_data = '21_WH-150_WV-1750'
+
+D = read_csv( paste0(path_to_data, '/long.csv') )
+S = read_csv( paste0(path_to_data, '/short.csv') ) 
+R = read_csv( paste0(path_to_data, '/remaining_peaks.csv') ) 
+
+S = S %>% 
+    mutate( key = paste(mz_L,mz_R)) %>%
+    group_by(key) %>%
+    summarize( 
+        mz_L = first(mz_L),
+        mz_R = first(mz_R),
+        tot_intensity = round(sum(tot_intensity)),
+        tot_estimate  = round(sum(tot_estimate))
+    ) %>%
+    mutate( mz_R = (mz_L+mz_R)/2 ) %>%
+    filter( tot_intensity > 0 | tot_estimate > 0 )
+
+
+D = D %>%   
+    drop_na() %>%
+    mutate( key = paste(mz_L,mz_R),
+            mz_L= (mz_L+mz_R)/2,
+            estimate = round(estimate) ) %>%
+    filter( estimate > 0 )
+
+R = R %>%
+    mutate( tot_intensity = round(tot_intensity) ) %>%
+    filter( tot_intensity > 0 )
+
+base_plot = 
+    figure(
+        width = 900,
+        height= 500,
+        title = "Wave Height = 150, Wave Velocity = 1750"
+    )  %>%
+    ly_rect(
+        data    = D,
+        xleft   = mz_L,
+        xright  = mz_R,
+        ybottom = 0,
+        ytop    = tot_estimate_tmp,
+        hover   = "m/z = [@mz_L,@mz_R] >> [@molType + @g]^{@q+} = @estimate",
+        color   = 'red'
+    ) %>%
+    ly_rect(
+        data    = S,
+        xleft   = mz_L,
+        xright  = mz_R,
+        ybottom = 0,
+        ytop    = tot_intensity,
+        hover   = "m/z = [@mz_L,@mz_R]  >> @tot_intensity",
+        color   = 'black'
+    ) %>%
+    ly_rect(
+        data    = R,
+        xleft   = mz_L,
+        xright  = mz_R,
+        ybottom = 0,
+        ytop    = tot_intensity,
+        hover   = "m/z = [@mz_L,@mz_R]  >> @tot_intensity",,
+        color   = 'grey'
+    ) %>%
+    x_axis(label = "m/z") %>%
+    y_axis(label = "Intensity")
+base_plot
+```
+
+
 
 Some of my projects include:
+
 
 * MassTodonPy
 * IsoSpec
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see [AAA](http://rmarkdown.rstudio.com).
 
-(https://github.com/MatteoLacki/MassTodonPy "MassTodonPy")
+<table class='container'><tr>
+<td>
+[MassTodonPy](https://matteolacki.github.io/MassTodonPy/)
+</td>
+<td>
+[IsoSpec](http://matteolacki.github.io/IsoSpec/)
+</td>
+</tr></table>"
 
 ![picture of spaghetti](gifs/tenor.gif)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 <!-- ```{r cars} -->
 <!-- summary(cars) -->

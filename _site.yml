@@ -7,7 +7,7 @@ navbar:
       icon: fa-home
       href: index.html
     - text: "Bio"
-      icon: fa-info
+      icon: glyphicon-user
       href: bio.html
     - text: "About"
       icon: fa-info
