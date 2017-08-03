@@ -6,6 +6,9 @@ navbar:
     - text: "Home"
       icon: fa-home
       href: index.html
+    - text: "Bio"
+      icon: fa-info
+      href: bio.html
     - text: "About"
       icon: fa-info
       href: about.html
