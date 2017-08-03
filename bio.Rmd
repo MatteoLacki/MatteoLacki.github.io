@@ -1,10 +1,99 @@
 ---
-title: "Curriculum Vitae"
-author: "Mateusz Krzysztof Łącki"
-date: "8/3/2017"
-output: html_document
+title: "The Life of Lacki"
+author: "Mateusz Krzysztof Łącki, that is."
+output: 
+  html_document:
+    theme: united
+    highlight: tango
 ---
 
-## PHD
+_________________________
+My clock started ticking around 8:36 on 27th February of 1986. Soon, the ticking was replaced by Geiger counts, as Tschernobyl cloud proudly went West.
+Gradually, I started to show first signs of interests in **math**..  
 
-I started my PHD in 2013. 
+Today, after more than 30 years of continuous development of silly sense of humour, I see I truly went my way...
+
+_________________________
+### In preparation
+
+* Łącki MK, Lermyte F, Miasojedow B, Olszański M, Startek M, Sobott F, Valkenborg D, Gambin A, Assigning peaks and modeling ETD in top-down mass spectrometry, [arXiv:1708.00234 [stat.AP]](https://arxiv.org/abs/1708.00234)
+
+* Bielczyński LW, Łącki MK, Hoefnagels I, Gambin A, Croce R, Leaf and plant age affects photosynthetic performance and photoprotective capacity.
+
+_________________________
+### Publications
+
+* Ciach MA, Łącki MK, Miasojedow B, Lermyte F, Valkenborg D, Sobott F, et al. Estimation of rates of reactions triggered by electron transfer in top-down mass spectrometry. Vol. 10330 LNBI, Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics). 2017. 
+* Łącki MK, Startek M, Valkenborg D, Gambin A. IsoSpec: Hyperfast Fine Structure Calculator. Anal Chem. 2017;89(6):3272–7. 
+* Lermyte F, Łącki MK, Valkenborg D, Gambin A, Sobott F. Conformational Space and Stability of ETD Charge Reduction Products of Ubiquitin. J Am Soc Mass Spectrom [Internet]. 2016; Available from: 
+* Lermyte F, Łącki MK, Valkenborg D, Baggerman G, Gambin A, Sobott F. Understanding reaction pathways in top-down ETD by dissecting isotope distributions: A mammoth task. Int J Mass Spectrom [Internet]. 2015;1–9. Available from: http://linkinghub.elsevier.com/retrieve/pii/S1387380615002572
+http://link.springer.com/10.1007/s13361-016-1444-7
+* Łącki MK, Miasojedow B. State-dependent swap strategies and automatic reduction of number of temperatures in adaptive parallel tempering algorithm. Stat Comput [Internet]. 2015; Available from: http://link.springer.com/10.1007/s11222-015-9579-0
+
+
+_________________________
+### Grant Participation
+
+No                      | role
+-----------------------|----------------------------------------
+NCN: No. 2015/17/N/ST6/03565            | **Modelling of fragmentation of biomolecules induced by electron transfer in mass spectrometry**, leader
+NCN: No. 2012/06/M/ST6/00438 | executor
+NCN: No. 2011/01/B/NZ2/00864 | executor
+
+
+_________________________
+### Workshops
+
+* ASMS 2017, Advanced Metabolomics
+* de.NBI Summer School: From Big Data to Big Insights, Dagstuhl, September 2016
+* EMBO Computational Biology Workshop, Goniądz, February 2015
+* 4th International Proteome Discoverer Users’ Meeting, Bremen 2015
+* 1st International Mass Spectrometry School, Siena 2013
+
+_________________________
+### Organised Scientific Meetings
+
+* EMBO Computational Biology Workshop 2, Jabłonna, April 2016
+* RECOMB-seq 2015, Warszawa
+
+
+_________________________
+### Teaching Assistance
+
+Course                | 
+-----------------------|----------------------------------------
+Advanced Monte Carlo Methods          | 1000-1M16ZMC
+Introduction to Statistics            | 1300-OPST2CW
+Stochastic Simulations                | 1000-135SST
+Statistics II                         | 1000-135ST2
+Ordinary Differential Equations I Lab | 1000-114bRRZIb
+Computational Molecular Medicin       | 1000-2M14OMM
+
+
+
+_________________________
+### Academic Degrees
+
+
+Date   |           Affiliation          | 
+-------|------------------------------- | ----------------------------------------------------
+T > 2013 | <img src="images/mimuw.jpg" height="200px" width="150x" /><img src="images/LSfBR_logo3.png" height="200px" width="150x" />  | *Modern Methods, Medicines and Treatments from the Viewpoint of Healthcare and Economy in the 21st Century Europe - Interdisciplinary Education in Biomedical Sciences, 2nd and 3rd Cycle Studies* <br><br> **PhD at the Faculty of Mathematics, Informatics, and Mechanics at University of Warsaw. Joint project with the Faculty of Biology** 
+T = 2015  | <img src="images/mimuw.jpg" height="10px" width="150px" /> | *Properties of the Parallel Tempering Algorithm* <br><br> **Master in Mathematics, Probability Theory**
+T = 2013  | <img src="images/sgh.png" height="200px" width="150x" /> | *Gładkość operatorów w modelu gospodarki z podatkami* <br><br> **Master in Quantitative Methods in Economics**
+T = 2011  | <img src="images/mimuw.jpg" height="200px" width="150x" /> | *Implementing the homotopy methods in finding solutions of nonlinear and polynomial systems of equations* <br><br> **Bachelor in Mathematics in Numerical Analysis**
+T = 2010  | <img src="images/sgh.png" height="200px" width="150x" /> | *Metody wyceny nieruchomości* <br><br> **Bachelor in Quantitative Methods in Economics**
+------------------------------------------------------------------------------------------
+
+
+_________________________
+### Spoken Languages
+
+Language | 
+----------|---------------------
+English   | Fluent, as certified by the [CPE](http://www.cambridgeenglish.org/exams/proficiency/)
+French    | Almost fluent, finished a rather nice [bilingual high-school](http://www.zmichowska.pl)  
+Italian   | Certo, parlo abbastanza bene, ma devo ricordarmene...
+
+
+There were others, but I forgot because of my current work. It is a shame that I have to bear...
+Oh, there's also Polish. 

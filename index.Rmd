@@ -18,10 +18,16 @@ I am a PHD at the University of Warsaw, [Department of Mathematics, Informatics 
 I am interested in developing  **Computational Mass Spectrometry**.
 
 Under the guidance of my tutors, [prof. Anna Gambin](https://www.mimuw.edu.pl/~aniag/) and [Błażej Miasojedow](https://mimuw.wikispaces.com/Miasojedow,+Błażej), 
-I have been developing algorithms and workflows for the analysis of mass spectrometric data. More specifically, we are interested in the study of mass spectra obtained with the use of Electron Transfer Reaction.  
+I have been developing algorithms and workflows for the analysis of mass spectrometric data. 
+More specifically, we are interested in the study of mass spectra obtained with the use of Electron Transfer Reaction.  
 
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+
+For our analysis, we use the very best of Belgian data, as provided by the team of experts from the [Centre for Proteomics](https://www.uantwerpen.be/en/research-and-innovation/research-at-uantwerp/core-facilities/core-facilities/centre-for-proteomics/). 
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 library(rbokeh)
 library(tidyverse)
 path_to_data = '21_WH-150_WV-1750'
@@ -108,7 +114,7 @@ Some of my projects include:
 <td>
 [IsoSpec](http://matteolacki.github.io/IsoSpec/)
 </td>
-</tr></table>"
+</tr></table>
 
 ![picture of spaghetti](gifs/tenor.gif)
 

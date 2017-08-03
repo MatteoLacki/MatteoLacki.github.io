@@ -1,31 +1,35 @@
 name: "my-website"
 navbar:
-  title: "My Website"
+  title: "Matteo Lacki"
   type: inverse
   left:
     - text: "Home"
       icon: fa-home
       href: index.html
+    - text: "Projects"
+      icon: glyphicon-apple
+      menu:
+        - text: "Mass Spectrometry"
+        - text: "IsoSpec"
+          icon: glyphicon-signal
+          href: masstodon.html
+        - text: "MassTodon"
+          icon: glyphicon-piggy-bank
+          href: masstodon.html
+        - text: "ETDetective"
+          icon: glyphicon-search
+          href: etdetective.html
+        - text: "Poisson Deconvolution"
+          icon: glyphicon-equalizer
+          href: etdetective.html
+        - text: "---------"
+        - text: "Photosynthesis"
+        - text: "Energy Partitions"
+          icon: glyphicon-leaf
+          href: photosynthesis.html
     - text: "Bio"
       icon: glyphicon-user
       href: bio.html
-    - text: "About"
-      icon: fa-info
-      href: about.html
-    - text: "More"
-      icon: fa-gear
-      menu:
-        - text: "Heading 1"
-        - text: "Page A"
-          href: page_a.html
-        - text: "Page B"
-          href: page_b.html
-        - text: "---------"
-        - text: "Heading 2"
-        - text: "Page C"
-          href: page_c.html
-        - text: "Page D"
-          href: page_d.html
   right:
     - icon: fa-question fa-lg
       href: https://example.com
