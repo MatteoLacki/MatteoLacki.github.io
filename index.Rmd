@@ -1,5 +1,5 @@
 ---
-title: "The Life of Lacki"
+title: "Make Science Great Again"
 author: "Mateusz Krzysztof Łącki"
 output: 
   html_document:
@@ -11,112 +11,50 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+<style>
+  body {
+    text-align: justify
+  }
+</style>
+
+
+![](images/art_spec.png)
+
 Welcome to my webpage! 
 
 I am a PHD at the University of Warsaw, [Department of Mathematics, Informatics and Mechanics](https://www.mimuw.edu.pl). 
 
-I am interested in developing  **Computational Mass Spectrometry**.
+I am chiefly interested in **Computational Mass Spectrometry**.
 
 Under the guidance of my tutors, [prof. Anna Gambin](https://www.mimuw.edu.pl/~aniag/) and [Błażej Miasojedow](https://mimuw.wikispaces.com/Miasojedow,+Błażej), 
 I have been developing algorithms and workflows for the analysis of mass spectrometric data. 
 More specifically, we are interested in the study of mass spectra obtained with the use of Electron Transfer Reaction.  
 
 
-
-
 For our analysis, we use the very best of Belgian data, as provided by the team of experts from the [Centre for Proteomics](https://www.uantwerpen.be/en/research-and-innovation/research-at-uantwerp/core-facilities/core-facilities/centre-for-proteomics/). 
 
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
-library(rbokeh)
-library(tidyverse)
-path_to_data = '21_WH-150_WV-1750'
-
-D = read_csv( paste0(path_to_data, '/long.csv') )
-S = read_csv( paste0(path_to_data, '/short.csv') ) 
-R = read_csv( paste0(path_to_data, '/remaining_peaks.csv') ) 
-
-S = S %>% 
-    mutate( key = paste(mz_L,mz_R)) %>%
-    group_by(key) %>%
-    summarize( 
-        mz_L = first(mz_L),
-        mz_R = first(mz_R),
-        tot_intensity = round(sum(tot_intensity)),
-        tot_estimate  = round(sum(tot_estimate))
-    ) %>%
-    mutate( mz_R = (mz_L+mz_R)/2 ) %>%
-    filter( tot_intensity > 0 | tot_estimate > 0 )
-
-
-D = D %>%   
-    drop_na() %>%
-    mutate( key = paste(mz_L,mz_R),
-            mz_L= (mz_L+mz_R)/2,
-            estimate = round(estimate) ) %>%
-    filter( estimate > 0 )
-
-R = R %>%
-    mutate( tot_intensity = round(tot_intensity) ) %>%
-    filter( tot_intensity > 0 )
-
-base_plot = 
-    figure(
-        width = 900,
-        height= 500,
-        title = "Wave Height = 150, Wave Velocity = 1750"
-    )  %>%
-    ly_rect(
-        data    = D,
-        xleft   = mz_L,
-        xright  = mz_R,
-        ybottom = 0,
-        ytop    = tot_estimate_tmp,
-        hover   = "m/z = [@mz_L,@mz_R] >> [@molType + @g]^{@q+} = @estimate",
-        color   = 'red'
-    ) %>%
-    ly_rect(
-        data    = S,
-        xleft   = mz_L,
-        xright  = mz_R,
-        ybottom = 0,
-        ytop    = tot_intensity,
-        hover   = "m/z = [@mz_L,@mz_R]  >> @tot_intensity",
-        color   = 'black'
-    ) %>%
-    ly_rect(
-        data    = R,
-        xleft   = mz_L,
-        xright  = mz_R,
-        ybottom = 0,
-        ytop    = tot_intensity,
-        hover   = "m/z = [@mz_L,@mz_R]  >> @tot_intensity",,
-        color   = 'grey'
-    ) %>%
-    x_axis(label = "m/z") %>%
-    y_axis(label = "Intensity")
-base_plot
-```
+The above graphic is a mass spectrum, incidentally, yet intentionally, plotted in a wrong way. It shows all we love and hate about Science. But maybe not, no, not really. It looks cool, though.
 
 
 
-Some of my projects include:
+<!-- Some of my projects include: -->
 
 
-* MassTodonPy
-* IsoSpec
+<!-- * MassTodonPy -->
+<!-- * IsoSpec -->
 
 
-<table class='container'><tr>
-<td>
-[MassTodonPy](https://matteolacki.github.io/MassTodonPy/)
-</td>
-<td>
-[IsoSpec](http://matteolacki.github.io/IsoSpec/)
-</td>
-</tr></table>
+<!-- <table class='container'><tr> -->
+<!-- <td> -->
+<!-- [MassTodonPy](https://matteolacki.github.io/MassTodonPy/) -->
+<!-- </td> -->
+<!-- <td> -->
+<!-- [IsoSpec](http://matteolacki.github.io/IsoSpec/) -->
+<!-- </td> -->
+<!-- </tr></table> -->
 
-![picture of spaghetti](gifs/tenor.gif)
+
+<!-- ![picture of spaghetti](gifs/tenor.gif) -->
 
 
 <!-- ```{r cars} -->
