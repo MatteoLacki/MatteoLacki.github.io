@@ -12,7 +12,7 @@ navbar:
         - text: "Mass Spectrometry"
         - text: "IsoSpec"
           icon: glyphicon-signal
-          href: masstodon.html
+          href: isospec.html
         - text: "MassTodon"
           icon: glyphicon-piggy-bank
           href: masstodon.html

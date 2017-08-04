@@ -1,0 +1,111 @@
+---
+title: "IsoSpec"
+output: 
+  html_document:
+    theme: united
+    highlight: tango
+---
+
+<style>
+  body {
+    text-align: justify
+  }
+</style>
+<br>
+
+# Briefing
+
+This is a joint project with Michał Startek, Dirk Valkenborg and Anna Gambin.
+
+Mass and charge of sample cations determine the output of any mass spectrometer. Indeed, at days end, what you get as output is nothing else, but a histogram depicting how much ions were recorded with different values of the mass over charge.
+
+IsoSpec is a tool whose main concern is how to answer the question, of how a signal of a molecule should look like when recorded by the instrument. *Where is the problem?* - you might think. Given the molecule's chemical formula  it is trivial to calculate the **signal**: it is simply the corresponding mass. Albeit, the [International Union of Pure and Applied Chemistry](https://iupac.org) went through a lot of effort to measure, as precisely as one can get, the masses of various chemical elements. The problem is, that vast majority of elements have [isotopes](http://kcvs.ca/isotopesmatter/iupacMaterials/javascript/Interactive%20Periodic%20Table%20of%20the%20Isotopes/HTML5/index.html) and these mess things up. 
+
+For instance, in case of proteomics most of molecules comprise carbon, hydrogen, nitrogen, oxygen, and some small amounts of sulphur,  $C_c H_h N_n O_o S_s$. Here is what sort of information we have about them:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, fig.align='center'}
+library(tidyverse)
+library(knitr)
+
+load('R_files/isotopes.Rda')
+isotopicData$IsoStarShort %>% select(-ratioC) %>% kable
+```
+
+It is usually assumed that each atom of the molecule can independently assume one isotopic variant, with probabilities equal to natural abundances, as found by IUPAC and shown in the table above. This induces the overall distribution of probability in the space of possible isotopologues. To each isotopologue its probability, comrades!
+
+An isotopologue with a formula $^{12}C_{c_0} {}^{13}C_{c_1} {}^{1}H_{h_0} {}^{2}H_{h_1} {}^{14}N_{n_0} {}^{15}N_{n_1} {}^{16}O_{o_0} {}^{17}O_{o_1} {}^{18}O_{o_2} {}^{32}S_{s_0} {}^{33}S_{s_1} {}^{34}S_{s_2} {}^{36}S_{s_3}$ (you think this is long? wait a bit) equals
+
+$$  \binom{c_0 + c_1}{c_0, c_1} P_{ {}^{12}C }^{c_0} P_{ {}^{13}C }^{c_1}
+    \binom{h_0 + h_1}{h_0, h_1} P_{ {}^{1}H }^{h_0} P_{ {}^{2}H }^{h_1}
+    \binom{n_0 + n_1}{n_0, n_1} P_{ {}^{14}N }^{n_0} P_{ {}^{15}N }^{n_1}
+    \binom{o_0 + o_1+ o_2}{o_0, o_1, o_2} P_{ {}^{16}O }^{o_0} P_{ {}^{17}O }^{o_1} P_{ {}^{18}O }^{o_2}
+    \binom{s_0 + s_1+ s_2 + s_3}{s_0, s_1, s_2, s_3} P_{ {}^{32}S }^{s_0} P_{ {}^{33}S }^{s_1} P_{ {}^{34}S }^{s_2} P_{ {}^{36}S }^{s_3}
+$$
+(that's long).
+
+What is complex in this equation, is not how long it is though, but how many isotopologues can there be to have these probabilities assigned to. 
+
+Well, there are $\prod_{e \in \mathcal{E}} \binom{n_e + i_e - 1}{n_e}$ possible isotopologues, where $n_e$s are the counts of atoms of element $e$  and $i_e$ is the number of isotopes of that element. Asymptotically, this is of order of $\mathcal{O}( \prod_{e \in \mathcal{E}} n_e^{i_e-1})$. Dirk Valkenborg called it a *combinatorial explosion* in its beautifully titled paper, the [Isotopic Distribution Conundrum](http://onlinelibrary.wiley.com/doi/10.1002/mas.20339/full).
+
+<br>
+Here are some isotopologues of bovine insulin $C_{254}H_{377}N_{65}O_{75}S_6$, just to know where we are:
+```{r, echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, fig.align='center'}
+library(IsoSpecR)
+
+bovine_insulin = c(C=254,H=377,N=65,O=75,S=6)
+res = 
+  IsoSpecify(bovine_insulin, .95, showCounts = T) %>% 
+  tbl_df() %>% 
+  mutate( prob = exp(logProb) ) 
+
+options(digits=8)
+res %>% 
+  select(mass, prob, C12, C13, H1, H2, N14, N15, O16, O17, O18, S32, S33, S34, S36) %>% 
+  filter(prob > .03) %>%
+  mutate( prob = paste0(round(100*prob,2),'%') ) %>% 
+  rename( probability = prob) %>%
+  kable
+```
+
+<br>
+In our paper in the Analytical Chemistry, we show how to find quickly the smallest set of the most probable isotopologues that jointly surpasses a given joint probability threshold $P$. This is to say, if you say: *hey, give me all the high peaks and skip the low ones. I want the high peaks to cover at least P percent of the spectrum*, then boy do you need IsoSpec!
+
+IN 
+
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, fig.align='center'}
+library(rbokeh)
+
+envelope = 
+  res %>%
+    figure(
+      width = 900,
+      height= 500,
+      title = "Theoretic Isotopic Envelope of Bovine Insulin, C=254 H=377 N=65 O=75 S=6"
+    ) %>%
+    ly_segments(
+      x0 = mass,
+      y0 = 0,
+      x1 = mass,
+      y1 = prob,
+      color = 'grey'
+    ) %>%
+    ly_points(
+      x = mass,
+      y = prob,
+      color = 'orange',
+      hover = 'M = @mass [amu] P = @prob    C12 = @C12'
+    )%>%
+    x_axis(label = "Mass [amu]") %>%
+    y_axis(label = "Probability")
+
+envelope
+```
+
+# Where to find IsoSpec?
+
+We have implemented IsoSpec in C++ so that nothing (but occasional *nasal deamons*) could stop our need for speed. We also made bindings to Python and R, so that any coder, a clingon and a federacy starship designer, could find its own way to run it. [Clik here, for installation instructions and examples.](http://matteolacki.github.io/IsoSpec/)
+
+We are also working on porting IsoSpec to [OpenMS](https://www.openms.de), for the better use of the mass spec community.

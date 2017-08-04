@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>IsoSpec</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<link href="site_libs/bokehjs-0.12.2/bokeh.min.css" rel="stylesheet" />
+<link href="site_libs/bokehjs-0.12.2/loader.css" rel="stylesheet" />
+<script src="site_libs/bokehjs-0.12.2/bokeh.min.js"></script>
+<script src="site_libs/rbokeh-binding-0.5.0/rbokeh.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Matteo Lacki</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="glyphicon glyphicon-apple"></span>
+     
+    Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Mass Spectrometry</li>
+    <li>
+      <a href="isospec.html">
+        <span class="glyphicon glyphicon-signal"></span>
+         
+        IsoSpec
+      </a>
+    </li>
+    <li>
+      <a href="masstodon.html">
+        <span class="glyphicon glyphicon-piggy-bank"></span>
+         
+        MassTodon
+      </a>
+    </li>
+    <li>
+      <a href="etdetective.html">
+        <span class="glyphicon glyphicon-search"></span>
+         
+        ETDetective
+      </a>
+    </li>
+    <li>
+      <a href="etdetective.html">
+        <span class="glyphicon glyphicon-equalizer"></span>
+         
+        Poisson Deconvolution
+      </a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Photosynthesis</li>
+    <li>
+      <a href="photosynthesis.html">
+        <span class="glyphicon glyphicon-leaf"></span>
+         
+        Energy Partitions
+      </a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="bio.html">
+    <span class="glyphicon glyphicon-user"></span>
+     
+    Bio
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://example.com">
+    <span class="fa fa-question fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">IsoSpec</h1>
+
+</div>
+
+
+<style>
+  body {
+    text-align: justify
+  }
+</style>
+<p><br></p>
+<div id="briefing" class="section level1">
+<h1>Briefing</h1>
+<p>This is a joint project with Michał Startek, Dirk Valkenborg and Anna Gambin.</p>
+<p>Mass and charge of sample cations determine the output of any mass spectrometer. Indeed, at days end, what you get as output is nothing else, but a histogram depicting how much ions were recorded with different values of the mass over charge.</p>
+<p>IsoSpec is a tool whose main concern is how to answer the question, of how a signal of a molecule should look like when recorded by the instrument. <em>Where is the problem?</em> - you might think. Given the molecule’s chemical formula it is trivial to calculate the <strong>signal</strong>: it is simply the corresponding mass. Albeit, the <a href="https://iupac.org">International Union of Pure and Applied Chemistry</a> went through a lot of effort to measure, as precisely as one can get, the masses of various chemical elements. The problem is, that vast majority of elements have <a href="http://kcvs.ca/isotopesmatter/iupacMaterials/javascript/Interactive%20Periodic%20Table%20of%20the%20Isotopes/HTML5/index.html">isotopes</a> and these mess things up.</p>
+<p>For instance, in case of proteomics most of molecules comprise carbon, hydrogen, nitrogen, oxygen, and some small amounts of sulphur, <span class="math inline">\(C_c H_h N_n O_o S_s\)</span>. Here is what sort of information we have about them:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">element</th>
+<th align="left">isotope</th>
+<th align="right">mass</th>
+<th align="right">abundance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">H</td>
+<td align="left">1H</td>
+<td align="right">1.007825</td>
+<td align="right">0.9998843</td>
+</tr>
+<tr class="even">
+<td align="left">H</td>
+<td align="left">2H</td>
+<td align="right">2.014102</td>
+<td align="right">0.0001157</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="left">12C</td>
+<td align="right">12.000000</td>
+<td align="right">0.9892119</td>
+</tr>
+<tr class="even">
+<td align="left">C</td>
+<td align="left">13C</td>
+<td align="right">13.003355</td>
+<td align="right">0.0107881</td>
+</tr>
+<tr class="odd">
+<td align="left">N</td>
+<td align="left">14N</td>
+<td align="right">14.003074</td>
+<td align="right">0.9963580</td>
+</tr>
+<tr class="even">
+<td align="left">N</td>
+<td align="left">15N</td>
+<td align="right">15.000109</td>
+<td align="right">0.0036420</td>
+</tr>
+<tr class="odd">
+<td align="left">O</td>
+<td align="left">16O</td>
+<td align="right">15.994915</td>
+<td align="right">0.9975676</td>
+</tr>
+<tr class="even">
+<td align="left">O</td>
+<td align="left">17O</td>
+<td align="right">16.999132</td>
+<td align="right">0.0003810</td>
+</tr>
+<tr class="odd">
+<td align="left">O</td>
+<td align="left">18O</td>
+<td align="right">17.999160</td>
+<td align="right">0.0020514</td>
+</tr>
+<tr class="even">
+<td align="left">S</td>
+<td align="left">32S</td>
+<td align="right">31.972071</td>
+<td align="right">0.9498500</td>
+</tr>
+<tr class="odd">
+<td align="left">S</td>
+<td align="left">33S</td>
+<td align="right">32.971459</td>
+<td align="right">0.0075194</td>
+</tr>
+<tr class="even">
+<td align="left">S</td>
+<td align="left">34S</td>
+<td align="right">33.967867</td>
+<td align="right">0.0425206</td>
+</tr>
+<tr class="odd">
+<td align="left">S</td>
+<td align="left">36S</td>
+<td align="right">35.967081</td>
+<td align="right">0.0001100</td>
+</tr>
+<tr class="even">
+<td align="left">Se</td>
+<td align="left">74Se</td>
+<td align="right">73.922476</td>
+<td align="right">0.0089384</td>
+</tr>
+<tr class="odd">
+<td align="left">Se</td>
+<td align="left">76Se</td>
+<td align="right">75.919214</td>
+<td align="right">0.0937125</td>
+</tr>
+<tr class="even">
+<td align="left">Se</td>
+<td align="left">77Se</td>
+<td align="right">76.919914</td>
+<td align="right">0.0763026</td>
+</tr>
+<tr class="odd">
+<td align="left">Se</td>
+<td align="left">78Se</td>
+<td align="right">77.917309</td>
+<td align="right">0.2376862</td>
+</tr>
+<tr class="even">
+<td align="left">Se</td>
+<td align="left">80Se</td>
+<td align="right">79.916523</td>
+<td align="right">0.4960537</td>
+</tr>
+<tr class="odd">
+<td align="left">Se</td>
+<td align="left">82Se</td>
+<td align="right">81.916700</td>
+<td align="right">0.0873066</td>
+</tr>
+</tbody>
+</table>
+<p>It is usually assumed that each atom of the molecule can independently assume one isotopic variant, with probabilities equal to natural abundances, as found by IUPAC and shown in the table above. This induces the overall distribution of probability in the space of possible isotopologues. To each isotopologue its probability, comrades!</p>
+<p>An isotopologue with a formula <span class="math inline">\(^{12}C_{c_0} {}^{13}C_{c_1} {}^{1}H_{h_0} {}^{2}H_{h_1} {}^{14}N_{n_0} {}^{15}N_{n_1} {}^{16}O_{o_0} {}^{17}O_{o_1} {}^{18}O_{o_2} {}^{32}S_{s_0} {}^{33}S_{s_1} {}^{34}S_{s_2} {}^{36}S_{s_3}\)</span> (you think this is long? wait a bit) equals</p>
+<p><span class="math display">\[  \binom{c_0 + c_1}{c_0, c_1} P_{ {}^{12}C }^{c_0} P_{ {}^{13}C }^{c_1}
+    \binom{h_0 + h_1}{h_0, h_1} P_{ {}^{1}H }^{h_0} P_{ {}^{2}H }^{h_1}
+    \binom{n_0 + n_1}{n_0, n_1} P_{ {}^{14}N }^{n_0} P_{ {}^{15}N }^{n_1}
+    \binom{o_0 + o_1+ o_2}{o_0, o_1, o_2} P_{ {}^{16}O }^{o_0} P_{ {}^{17}O }^{o_1} P_{ {}^{18}O }^{o_2}
+    \binom{s_0 + s_1+ s_2 + s_3}{s_0, s_1, s_2, s_3} P_{ {}^{32}S }^{s_0} P_{ {}^{33}S }^{s_1} P_{ {}^{34}S }^{s_2} P_{ {}^{36}S }^{s_3}
+\]</span> (that’s long).</p>
+<p>What is complex in this equation, is not how long it is though, but how many isotopologues can there be to have these probabilities assigned to.</p>
+<p>Well, there are <span class="math inline">\(\prod_{e \in \mathcal{E}} \binom{n_e + i_e - 1}{n_e}\)</span> possible isotopologues, where <span class="math inline">\(n_e\)</span>s are the counts of atoms of element <span class="math inline">\(e\)</span> and <span class="math inline">\(i_e\)</span> is the number of isotopes of that element. Asymptotically, this is of order of <span class="math inline">\(\mathcal{O}( \prod_{e \in \mathcal{E}} n_e^{i_e-1})\)</span>. Dirk Valkenborg called it a <em>combinatorial explosion</em> in its beautifully titled paper, the <a href="http://onlinelibrary.wiley.com/doi/10.1002/mas.20339/full">Isotopic Distribution Conundrum</a>.</p>
+<p><br> Here are some isotopologues of bovine insulin <span class="math inline">\(C_{254}H_{377}N_{65}O_{75}S_6\)</span>, just to know where we are:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">mass</th>
+<th align="left">probability</th>
+<th align="right">C12</th>
+<th align="right">C13</th>
+<th align="right">H1</th>
+<th align="right">H2</th>
+<th align="right">N14</th>
+<th align="right">N15</th>
+<th align="right">O16</th>
+<th align="right">O17</th>
+<th align="right">O18</th>
+<th align="right">S32</th>
+<th align="right">S33</th>
+<th align="right">S34</th>
+<th align="right">S36</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">5731.6076</td>
+<td align="left">11.23%</td>
+<td align="right">252</td>
+<td align="right">2</td>
+<td align="right">377</td>
+<td align="right">0</td>
+<td align="right">65</td>
+<td align="right">0</td>
+<td align="right">75</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">6</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">5733.6034</td>
+<td align="left">3.02%</td>
+<td align="right">252</td>
+<td align="right">2</td>
+<td align="right">377</td>
+<td align="right">0</td>
+<td align="right">65</td>
+<td align="right">0</td>
+<td align="right">75</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">5</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">5732.6109</td>
+<td align="left">10.29%</td>
+<td align="right">251</td>
+<td align="right">3</td>
+<td align="right">377</td>
+<td align="right">0</td>
+<td align="right">65</td>
+<td align="right">0</td>
+<td align="right">75</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">6</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">5730.6042</td>
+<td align="left">8.14%</td>
+<td align="right">253</td>
+<td align="right">1</td>
+<td align="right">377</td>
+<td align="right">0</td>
+<td align="right">65</td>
+<td align="right">0</td>
+<td align="right">75</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">6</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="right">5733.6143</td>
+<td align="left">7.04%</td>
+<td align="right">250</td>
+<td align="right">4</td>
+<td align="right">377</td>
+<td align="right">0</td>
+<td align="right">65</td>
+<td align="right">0</td>
+<td align="right">75</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">6</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="right">5734.6176</td>
+<td align="left">3.84%</td>
+<td align="right">249</td>
+<td align="right">5</td>
+<td align="right">377</td>
+<td align="right">0</td>
+<td align="right">65</td>
+<td align="right">0</td>
+<td align="right">75</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">6</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p><br> In our paper in the Analytical Chemistry, we show how to find quickly the smallest set of the most probable isotopologues that jointly surpasses a given joint probability threshold <span class="math inline">\(P\)</span>. This is to say, if you say: <em>hey, give me all the high peaks and skip the low ones. I want the high peaks to cover at least P percent of the spectrum</em>, then boy do you need IsoSpec!</p>
+<div id="htmlwidget-7f9788fc1d2477d7ce65" style="width:900px;height:500px;" class="rbokeh html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7f9788fc1d2477d7ce65">{"x":{"elementid":"d90584026ae58829a87ec84891465048","modeltype":"Plot","modelid":"e72a794710c043dd9a7f3dc0a56acf2c","docid":"76ac9c6915ad95cb03bbf0287b6b3e2e","docs_json":{"76ac9c6915ad95cb03bbf0287b6b3e2e":{"version":"0.12.2","title":"Bokeh Figure","roots":{"root_ids":["e72a794710c043dd9a7f3dc0a56acf2c"],"references":[{"type":"Plot","id":"e72a794710c043dd9a7f3dc0a56acf2c","attributes":{"id":"e72a794710c043dd9a7f3dc0a56acf2c","plot_width":900,"plot_height":500,"sizing_mode":"scale_both","x_range":{"type":"Range1d","id":"572c294c778d899a7a2561414f097ce3"},"y_range":{"type":"Range1d","id":"63124c567c41f1de03c2f0fa51b1474f"},"left":[{"type":"LinearAxis","id":"213ba6284c149215d920d393df369a2c"}],"below":[{"type":"LinearAxis","id":"35142dbf2d64d09516b4c79aabf6a994"}],"right":[],"above":[],"renderers":[{"type":"BoxAnnotation","id":"e17e40ed6ff5bfc8de46105de9af0d67"},{"type":"GlyphRenderer","id":"22b55de271e4ba76ffa29478b3bd9f05"},{"type":"GlyphRenderer","id":"38aa6fded24ed610cbd0b45246288233"},{"type":"LinearAxis","id":"35142dbf2d64d09516b4c79aabf6a994"},{"type":"Grid","id":"1563b53e83ead3a365a80480082fc193"},{"type":"LinearAxis","id":"213ba6284c149215d920d393df369a2c"},{"type":"Grid","id":"5c1c912cd9dcf784a186044e3e82d02d"}],"extra_y_ranges":{},"extra_x_ranges":{},"tags":[],"min_border_left":4,"min_border_right":4,"min_border_top":4,"min_border_bottom":4,"lod_threshold":null,"toolbar":{"type":"Toolbar","id":"3f02b0ff638d7a0ec9286b1d86835080"},"tool_events":{"type":"ToolEvents","id":"c641f20436742c2392f1d7cd1e3d4da0"},"title":{"type":"Title","id":"4613b2f31a3ea8f5da17a308cd8350a5"}},"subtype":"Figure"},{"type":"Toolbar","id":"3f02b0ff638d7a0ec9286b1d86835080","attributes":{"id":"3f02b0ff638d7a0ec9286b1d86835080","tags":[],"active_drag":"auto","active_scroll":"auto","active_tap":"auto","tools":[{"type":"PanTool","id":"aeeb8afe4b2b3b3455f9b5106c9beadd"},{"type":"WheelZoomTool","id":"44e72af2eef727d43f6041234f576c0a"},{"type":"BoxZoomTool","id":"f6c1f0b0691b9f9dc99c79f781b8e6ba"},{"type":"ResetTool","id":"56b6a029f1e4120f30352816c9791521"},{"type":"SaveTool","id":"6752de0ff018b796ffb9c64d4bfa1b32"},{"type":"HelpTool","id":"1e0b11d6e0e927a74d3f2fcf4f87af3b"},{"type":"HoverTool","id":"7f2519c85c37f10eba59ff73481c0b56"}],"logo":null}},{"type":"PanTool","id":"aeeb8afe4b2b3b3455f9b5106c9beadd","attributes":{"id":"aeeb8afe4b2b3b3455f9b5106c9beadd","tags":[],"plot":{"type":"Plot","id":"e72a794710c043dd9a7f3dc0a56acf2c","subtype":"Figure"},"dimensions":["width","height"]}},{"type":"ToolEvents","id":"c641f20436742c2392f1d7cd1e3d4da0","attributes":{"id":"c641f20436742c2392f1d7cd1e3d4da0","tags":[]},"geometries":[]},{"type":"WheelZoomTool","id":"44e72af2eef727d43f6041234f576c0a","attributes":{"id":"44e72af2eef727d43f6041234f576c0a","tags":[],"plot":{"type":"Plot","id":"e72a794710c043dd9a7f3dc0a56acf2c","subtype":"Figure"},"dimensions":["width","height"]}},{"type":"BoxAnnotation","id":"e17e40ed6ff5bfc8de46105de9af0d67","attributes":{"id":"e17e40ed6ff5bfc8de46105de9af0d67","tags":[],"line_color":{"units":"data","value":"black"},"line_alpha":{"units":"data","value":1},"fill_color":{"units":"data","value":"lightgrey"},"fill_alpha":{"units":"data","value":0.5},"line_dash":[4,4],"line_width":{"units":"data","value":2},"level":"overlay","top_units":"screen","bottom_units":"screen","left_units":"screen","right_units":"screen","render_mode":"css"}},{"type":"BoxZoomTool","id":"f6c1f0b0691b9f9dc99c79f781b8e6ba","attributes":{"id":"f6c1f0b0691b9f9dc99c79f781b8e6ba","tags":[],"plot":{"type":"Plot","id":"e72a794710c043dd9a7f3dc0a56acf2c","subtype":"Figure"},"overlay":{"type":"BoxAnnotation","id":"e17e40ed6ff5bfc8de46105de9af0d67"}}},{"type":"ResetTool","id":"56b6a029f1e4120f30352816c9791521","attributes":{"id":"56b6a029f1e4120f30352816c9791521","tags":[],"plot":{"type":"Plot","id":"e72a794710c043dd9a7f3dc0a56acf2c","subtype":"Figure"}}},{"type":"SaveTool","id":"6752de0ff018b796ffb9c64d4bfa1b32","attributes":{"id":"6752de0ff018b796ffb9c64d4bfa1b32","tags":[],"plot":{"type":"Plot","id":"e72a794710c043dd9a7f3dc0a56acf2c","subtype":"Figure"}}},{"type":"HelpTool","id":"1e0b11d6e0e927a74d3f2fcf4f87af3b","attributes":{"id":"1e0b11d6e0e927a74d3f2fcf4f87af3b","tags":[],"plot":{"type":"Plot","id":"e72a794710c043dd9a7f3dc0a56acf2c","subtype":"Figure"},"redirect":"http://hafen.github.io/rbokeh","help_tooltip":"Click to learn more about rbokeh."}},{"type":"Title","id":"4613b2f31a3ea8f5da17a308cd8350a5","attributes":{"id":"4613b2f31a3ea8f5da17a308cd8350a5","tags":[],"plot":null,"text":"Theoretic Isotopic Envelope of Bovine Insulin, C=254 H=377 N=65 O=75 S=6"}},{"type":"ColumnDataSource","id":"8d8420fc4337414bd09d5b48040dd5fc","attributes":{"id":"8d8420fc4337414bd09d5b48040dd5fc","tags":[],"column_names":["x0","y0","x1","y1","line_color"],"selected":[],"data":{"x0":[5731.60758066879,5733.60337652469,5734.60673135989,5732.60002168949,5735.61008619509,5732.61093550399,5730.60422583359,5733.61429033919,5734.61764517439,5729.60087099839,5735.62100000959,5732.60461556399,5733.60797039919,5731.60126072879,5733.61182566229,5732.60696840479,5735.59917238059,5733.61032323999,5731.60361356959,5734.61367807519,5732.61179780619,5734.60886055749,5735.61221539269,5735.60762151819,5736.61097635339,5734.60426668299,5734.61518049749,5732.60847082709,5735.61853533269,5736.62189016789,5731.60511599189,5734.61132523439,5735.61468006959,5730.59790589359,5736.61803490479,5732.61385741471,5733.61721224991,5731.61050257951,5734.60041141989,5735.60376625509,5733.59705658469,5736.60712109029,5736.62435484479,5736.61344103029,5731.59666685429,5737.61679586549,5733.60165045919,5734.60965327061,5733.61515264139,5731.60844297099,5734.61850747659,5733.60550572229,5736.61557022789,5737.61892506309,5735.61703291039,5730.60025873439,5734.60500529439,5732.59829562399,5735.60836012959,5738.62015070069,5737.62770967999,5737.61047592549,5732.59370174949,5735.61607065579,5734.62056708511,5735.62392192031,5730.60714774431,5737.62138973999,5737.62524500309,5737.61433118859,5738.61768602379,5736.60252721579,5734.59581754539,5737.60588205099,5733.60400329999,5735.61300810581,5736.61171496479,5731.59494078879,5733.60629843541,5736.61636294101,5735.62186231179,5730.60508813579,5738.61383076069,5734.60276426069,5735.60611909589,5733.59940942549,5736.60947393109,5736.61942549099,5734.61271582059,5737.62278032619,5733.61089230991,5736.62727675551,5734.60735813519,5732.60064846479,5735.61071297039,5732.60215088709,5738.62859983829,5734.61424714511,5732.60753747471,5733.60091184779,5736.62038774559,5735.61760198031,5738.60923688619,5733.59246271019,5736.60465641339,5737.60801124859,5735.60130157819,5734.61810240821,5736.59620727579,5737.59956211099,5735.59744631509,5736.60080115029,5733.60883270139,5734.61121339829,5735.61456823349,5734.60759366209,5735.61094849729,5739.62104085899,5738.63106451519,5738.61136608379,5735.62145724341,5739.62350553589,5734.59409147989,5734.61218753659,5738.62227989829,5733.60785856309,5733.60423882689,5735.59285244059,5732.60547786619,5733.61474757301,5738.60291694619,5739.61259172139,5737.60415598549,5736.61792306869,5736.61430333249,5738.62474457519,5737.60341737409,5736.62521714699,5734.61604279969,5737.61506979999],"y0":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x1":[5731.60758066879,5733.60337652469,5734.60673135989,5732.60002168949,5735.61008619509,5732.61093550399,5730.60422583359,5733.61429033919,5734.61764517439,5729.60087099839,5735.62100000959,5732.60461556399,5733.60797039919,5731.60126072879,5733.61182566229,5732.60696840479,5735.59917238059,5733.61032323999,5731.60361356959,5734.61367807519,5732.61179780619,5734.60886055749,5735.61221539269,5735.60762151819,5736.61097635339,5734.60426668299,5734.61518049749,5732.60847082709,5735.61853533269,5736.62189016789,5731.60511599189,5734.61132523439,5735.61468006959,5730.59790589359,5736.61803490479,5732.61385741471,5733.61721224991,5731.61050257951,5734.60041141989,5735.60376625509,5733.59705658469,5736.60712109029,5736.62435484479,5736.61344103029,5731.59666685429,5737.61679586549,5733.60165045919,5734.60965327061,5733.61515264139,5731.60844297099,5734.61850747659,5733.60550572229,5736.61557022789,5737.61892506309,5735.61703291039,5730.60025873439,5734.60500529439,5732.59829562399,5735.60836012959,5738.62015070069,5737.62770967999,5737.61047592549,5732.59370174949,5735.61607065579,5734.62056708511,5735.62392192031,5730.60714774431,5737.62138973999,5737.62524500309,5737.61433118859,5738.61768602379,5736.60252721579,5734.59581754539,5737.60588205099,5733.60400329999,5735.61300810581,5736.61171496479,5731.59494078879,5733.60629843541,5736.61636294101,5735.62186231179,5730.60508813579,5738.61383076069,5734.60276426069,5735.60611909589,5733.59940942549,5736.60947393109,5736.61942549099,5734.61271582059,5737.62278032619,5733.61089230991,5736.62727675551,5734.60735813519,5732.60064846479,5735.61071297039,5732.60215088709,5738.62859983829,5734.61424714511,5732.60753747471,5733.60091184779,5736.62038774559,5735.61760198031,5738.60923688619,5733.59246271019,5736.60465641339,5737.60801124859,5735.60130157819,5734.61810240821,5736.59620727579,5737.59956211099,5735.59744631509,5736.60080115029,5733.60883270139,5734.61121339829,5735.61456823349,5734.60759366209,5735.61094849729,5739.62104085899,5738.63106451519,5738.61136608379,5735.62145724341,5739.62350553589,5734.59409147989,5734.61218753659,5738.62227989829,5733.60785856309,5733.60423882689,5735.59285244059,5732.60547786619,5733.61474757301,5738.60291694619,5739.61259172139,5737.60415598549,5736.61792306869,5736.61430333249,5738.62474457519,5737.60341737409,5736.62521714699,5734.61604279969,5737.61506979999],"y1":[0.112302351379058,0.0301636876348877,0.0276323390419829,0.0218645216871684,0.0189097291017767,0.102877893647488,0.081403747014255,0.0704027659938477,0.0383896059730504,0.0293871013764703,0.0173746345835743,0.0266824062358495,0.0244432081544348,0.0193410718500746,0.0173203389826098,0.00533418613052289,0.00337573835484543,0.00488653912133644,0.00386655072635467,0.00334402132549526,0.00321685149282164,0.00411521499952136,0.00376986452962421,0.00465213139694987,0.00426172269068622,0.00337215492519955,0.0158668092868058,0.0125548617230862,0.0108581855798452,0.00592081092423191,0.0045323588625385,0.0167273007137196,0.0091211541809101,0.00698220978806057,0.00412811532853463,0.00489948837695938,0.0044883213751295,0.00355145468852276,0.00716672230956896,0.00656528813966049,0.00519488721870486,0.004492845140886,0.00671310203760231,0.0103112006897253,0.00789318598880139,0.00466671484535794,0.00312102865459609,0.00131597099400472,0.00294689204361558,0.00233177455225495,0.00201665628640003,0.00298296444034006,0.00257984374385684,0.00140675133143715,0.00182344627002949,0.00139584137512432,0.00285911069586183,0.00226231618397225,0.00195658458911482,0.00180309593197997,0.00226039398435857,0.00244988321441263,0.0018753765389777,0.00131784516057824,0.00307150767064859,0.00167484853123108,0.00128209035570909,0.00159499523803753,0.00267968174300045,0.00291643865057282,0.00159029164635164,0.00309244505735519,0.00244694565741212,0.00211626305713274,0.00126737258413975,0.00120553418785889,0.00106689716474527,0.000816705833361452,0.0009538978352508,0.000824987160178755,0.00109965338896965,0.000841780601846134,0.00110878516577464,0.00119394000698136,0.00109374408951703,0.000865442166481947,0.000748485475949498,0.00120725107363252,0.000955256348048971,0.000826162082244843,0.00116409084597522,0.000758014584296704,0.00116101417576538,0.000918670677374201,0.000794520634452608,0.00107686294090773,0.00103535857876795,0.00106639988190474,0.000843805633307941,0.00121736237309382,0.000825267981306831,0.000729772924772942,0.00115396751465345,0.000883357864159391,0.00110532022056232,0.00101256131061413,0.000801205019302689,0.000755645794484391,0.000802056422005793,0.000734747529941601,0.000838288177235138,0.000767938701946228,0.000764305798390186,0.000822689025140227,0.000753648636862956,0.000864025573870475,0.000791516206079478,0.000719745241877902,0.000673799475596135,0.000692929398903293,0.000692231700632346,0.000607127252801992,0.000607643543226963,0.000700164953586241,0.000636677291005154,0.000596336305086554,0.00062629961319149,0.000581380507766407,0.000554016501788807,0.000547739190953966,0.000502812184241288,0.000522270634986306,0.000525526007715456,0.000515746840661923,0.000541660878360261,0.00053705688084972,0.000520638543223093,0.000497688770636232,0.000489518383718721,0.000482863731102462],"line_color":["grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey"]}}},{"type":"Segment","id":"255bc51ee610c06afd667de8d1d3179f","attributes":{"id":"255bc51ee610c06afd667de8d1d3179f","tags":[],"visible":true,"line_alpha":{"units":"data","value":1},"line_width":{"units":"data","value":1},"x0":{"units":"data","field":"x0"},"y0":{"units":"data","field":"y0"},"x1":{"units":"data","field":"x1"},"y1":{"units":"data","field":"y1"},"line_color":{"units":"data","field":"line_color"}}},{"type":"Segment","id":"5b3a3130d7b5a68ba979125f50214209","attributes":{"id":"5b3a3130d7b5a68ba979125f50214209","tags":[],"visible":true,"line_alpha":{"units":"data","value":1},"line_width":{"units":"data","value":1},"x0":{"units":"data","field":"x0"},"y0":{"units":"data","field":"y0"},"x1":{"units":"data","field":"x1"},"y1":{"units":"data","field":"y1"},"line_color":{"units":"data","value":"#e1e1e1"}}},{"type":"Segment","id":"7e285a0b896bee1a34b237eafd804fc5","attributes":{"id":"7e285a0b896bee1a34b237eafd804fc5","tags":[],"visible":true,"line_alpha":{"units":"data","value":1},"line_width":{"units":"data","value":1},"x0":{"units":"data","field":"x0"},"y0":{"units":"data","field":"y0"},"x1":{"units":"data","field":"x1"},"y1":{"units":"data","field":"y1"},"line_color":{"units":"data","field":"line_color"}}},{"type":"GlyphRenderer","id":"22b55de271e4ba76ffa29478b3bd9f05","attributes":{"id":"22b55de271e4ba76ffa29478b3bd9f05","tags":[],"selection_glyph":null,"nonselection_glyph":{"type":"Segment","id":"5b3a3130d7b5a68ba979125f50214209"},"hover_glyph":{"type":"Segment","id":"7e285a0b896bee1a34b237eafd804fc5"},"name":null,"data_source":{"type":"ColumnDataSource","id":"8d8420fc4337414bd09d5b48040dd5fc"},"glyph":{"type":"Segment","id":"255bc51ee610c06afd667de8d1d3179f"}}},{"type":"HoverTool","id":"7f2519c85c37f10eba59ff73481c0b56","attributes":{"id":"7f2519c85c37f10eba59ff73481c0b56","tags":[],"plot":{"type":"Plot","id":"e72a794710c043dd9a7f3dc0a56acf2c","subtype":"Figure"},"renderers":[{"type":"GlyphRenderer","id":"38aa6fded24ed610cbd0b45246288233"}],"names":[],"anchor":"center","attachment":"horizontal","line_policy":"prev","mode":"mouse","point_policy":"snap_to_data","tooltips":"M = @hover_col_1 [amu] P = @hover_col_2    C12 = @hover_col_3"}},{"type":"ColumnDataSource","id":"415f624abea04f11af6462fa5e59288f","attributes":{"id":"415f624abea04f11af6462fa5e59288f","tags":[],"column_names":["x","y","line_color","fill_color","hover_col_1","hover_col_2","hover_col_3"],"selected":[],"data":{"x":[5731.60758066879,5733.60337652469,5734.60673135989,5732.60002168949,5735.61008619509,5732.61093550399,5730.60422583359,5733.61429033919,5734.61764517439,5729.60087099839,5735.62100000959,5732.60461556399,5733.60797039919,5731.60126072879,5733.61182566229,5732.60696840479,5735.59917238059,5733.61032323999,5731.60361356959,5734.61367807519,5732.61179780619,5734.60886055749,5735.61221539269,5735.60762151819,5736.61097635339,5734.60426668299,5734.61518049749,5732.60847082709,5735.61853533269,5736.62189016789,5731.60511599189,5734.61132523439,5735.61468006959,5730.59790589359,5736.61803490479,5732.61385741471,5733.61721224991,5731.61050257951,5734.60041141989,5735.60376625509,5733.59705658469,5736.60712109029,5736.62435484479,5736.61344103029,5731.59666685429,5737.61679586549,5733.60165045919,5734.60965327061,5733.61515264139,5731.60844297099,5734.61850747659,5733.60550572229,5736.61557022789,5737.61892506309,5735.61703291039,5730.60025873439,5734.60500529439,5732.59829562399,5735.60836012959,5738.62015070069,5737.62770967999,5737.61047592549,5732.59370174949,5735.61607065579,5734.62056708511,5735.62392192031,5730.60714774431,5737.62138973999,5737.62524500309,5737.61433118859,5738.61768602379,5736.60252721579,5734.59581754539,5737.60588205099,5733.60400329999,5735.61300810581,5736.61171496479,5731.59494078879,5733.60629843541,5736.61636294101,5735.62186231179,5730.60508813579,5738.61383076069,5734.60276426069,5735.60611909589,5733.59940942549,5736.60947393109,5736.61942549099,5734.61271582059,5737.62278032619,5733.61089230991,5736.62727675551,5734.60735813519,5732.60064846479,5735.61071297039,5732.60215088709,5738.62859983829,5734.61424714511,5732.60753747471,5733.60091184779,5736.62038774559,5735.61760198031,5738.60923688619,5733.59246271019,5736.60465641339,5737.60801124859,5735.60130157819,5734.61810240821,5736.59620727579,5737.59956211099,5735.59744631509,5736.60080115029,5733.60883270139,5734.61121339829,5735.61456823349,5734.60759366209,5735.61094849729,5739.62104085899,5738.63106451519,5738.61136608379,5735.62145724341,5739.62350553589,5734.59409147989,5734.61218753659,5738.62227989829,5733.60785856309,5733.60423882689,5735.59285244059,5732.60547786619,5733.61474757301,5738.60291694619,5739.61259172139,5737.60415598549,5736.61792306869,5736.61430333249,5738.62474457519,5737.60341737409,5736.62521714699,5734.61604279969,5737.61506979999],"y":[0.112302351379058,0.0301636876348877,0.0276323390419829,0.0218645216871684,0.0189097291017767,0.102877893647488,0.081403747014255,0.0704027659938477,0.0383896059730504,0.0293871013764703,0.0173746345835743,0.0266824062358495,0.0244432081544348,0.0193410718500746,0.0173203389826098,0.00533418613052289,0.00337573835484543,0.00488653912133644,0.00386655072635467,0.00334402132549526,0.00321685149282164,0.00411521499952136,0.00376986452962421,0.00465213139694987,0.00426172269068622,0.00337215492519955,0.0158668092868058,0.0125548617230862,0.0108581855798452,0.00592081092423191,0.0045323588625385,0.0167273007137196,0.0091211541809101,0.00698220978806057,0.00412811532853463,0.00489948837695938,0.0044883213751295,0.00355145468852276,0.00716672230956896,0.00656528813966049,0.00519488721870486,0.004492845140886,0.00671310203760231,0.0103112006897253,0.00789318598880139,0.00466671484535794,0.00312102865459609,0.00131597099400472,0.00294689204361558,0.00233177455225495,0.00201665628640003,0.00298296444034006,0.00257984374385684,0.00140675133143715,0.00182344627002949,0.00139584137512432,0.00285911069586183,0.00226231618397225,0.00195658458911482,0.00180309593197997,0.00226039398435857,0.00244988321441263,0.0018753765389777,0.00131784516057824,0.00307150767064859,0.00167484853123108,0.00128209035570909,0.00159499523803753,0.00267968174300045,0.00291643865057282,0.00159029164635164,0.00309244505735519,0.00244694565741212,0.00211626305713274,0.00126737258413975,0.00120553418785889,0.00106689716474527,0.000816705833361452,0.0009538978352508,0.000824987160178755,0.00109965338896965,0.000841780601846134,0.00110878516577464,0.00119394000698136,0.00109374408951703,0.000865442166481947,0.000748485475949498,0.00120725107363252,0.000955256348048971,0.000826162082244843,0.00116409084597522,0.000758014584296704,0.00116101417576538,0.000918670677374201,0.000794520634452608,0.00107686294090773,0.00103535857876795,0.00106639988190474,0.000843805633307941,0.00121736237309382,0.000825267981306831,0.000729772924772942,0.00115396751465345,0.000883357864159391,0.00110532022056232,0.00101256131061413,0.000801205019302689,0.000755645794484391,0.000802056422005793,0.000734747529941601,0.000838288177235138,0.000767938701946228,0.000764305798390186,0.000822689025140227,0.000753648636862956,0.000864025573870475,0.000791516206079478,0.000719745241877902,0.000673799475596135,0.000692929398903293,0.000692231700632346,0.000607127252801992,0.000607643543226963,0.000700164953586241,0.000636677291005154,0.000596336305086554,0.00062629961319149,0.000581380507766407,0.000554016501788807,0.000547739190953966,0.000502812184241288,0.000522270634986306,0.000525526007715456,0.000515746840661923,0.000541660878360261,0.00053705688084972,0.000520638543223093,0.000497688770636232,0.000489518383718721,0.000482863731102462],"line_color":["orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange"],"fill_color":["orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange","orange"],"hover_col_1":["5731.6076","5733.6034","5734.6067","5732.6000","5735.6101","5732.6109","5730.6042","5733.6143","5734.6176","5729.6009","5735.6210","5732.6046","5733.6080","5731.6013","5733.6118","5732.6070","5735.5992","5733.6103","5731.6036","5734.6137","5732.6118","5734.6089","5735.6122","5735.6076","5736.6110","5734.6043","5734.6152","5732.6085","5735.6185","5736.6219","5731.6051","5734.6113","5735.6147","5730.5979","5736.6180","5732.6139","5733.6172","5731.6105","5734.6004","5735.6038","5733.5971","5736.6071","5736.6244","5736.6134","5731.5967","5737.6168","5733.6017","5734.6097","5733.6152","5731.6084","5734.6185","5733.6055","5736.6156","5737.6189","5735.6170","5730.6003","5734.6050","5732.5983","5735.6084","5738.6202","5737.6277","5737.6105","5732.5937","5735.6161","5734.6206","5735.6239","5730.6071","5737.6214","5737.6252","5737.6143","5738.6177","5736.6025","5734.5958","5737.6059","5733.6040","5735.6130","5736.6117","5731.5949","5733.6063","5736.6164","5735.6219","5730.6051","5738.6138","5734.6028","5735.6061","5733.5994","5736.6095","5736.6194","5734.6127","5737.6228","5733.6109","5736.6273","5734.6074","5732.6006","5735.6107","5732.6022","5738.6286","5734.6142","5732.6075","5733.6009","5736.6204","5735.6176","5738.6092","5733.5925","5736.6047","5737.6080","5735.6013","5734.6181","5736.5962","5737.5996","5735.5974","5736.6008","5733.6088","5734.6112","5735.6146","5734.6076","5735.6109","5739.6210","5738.6311","5738.6114","5735.6215","5739.6235","5734.5941","5734.6122","5738.6223","5733.6079","5733.6042","5735.5929","5732.6055","5733.6147","5738.6029","5739.6126","5737.6042","5736.6179","5736.6143","5738.6247","5737.6034","5736.6252","5734.6160","5737.6151"],"hover_col_2":["0.11230235138","0.03016368763","0.02763233904","0.02186452169","0.01890972910","0.10287789365","0.08140374701","0.07040276599","0.03838960597","0.02938710138","0.01737463458","0.02668240624","0.02444320815","0.01934107185","0.01732033898","0.00533418613","0.00337573835","0.00488653912","0.00386655073","0.00334402133","0.00321685149","0.00411521500","0.00376986453","0.00465213140","0.00426172269","0.00337215493","0.01586680929","0.01255486172","0.01085818558","0.00592081092","0.00453235886","0.01672730071","0.00912115418","0.00698220979","0.00412811533","0.00489948838","0.00448832138","0.00355145469","0.00716672231","0.00656528814","0.00519488722","0.00449284514","0.00671310204","0.01031120069","0.00789318599","0.00466671485","0.00312102865","0.00131597099","0.00294689204","0.00233177455","0.00201665629","0.00298296444","0.00257984374","0.00140675133","0.00182344627","0.00139584138","0.00285911070","0.00226231618","0.00195658459","0.00180309593","0.00226039398","0.00244988321","0.00187537654","0.00131784516","0.00307150767","0.00167484853","0.00128209036","0.00159499524","0.00267968174","0.00291643865","0.00159029165","0.00309244506","0.00244694566","0.00211626306","0.00126737258","0.00120553419","0.00106689716","0.00081670583","0.00095389784","0.00082498716","0.00109965339","0.00084178060","0.00110878517","0.00119394001","0.00109374409","0.00086544217","0.00074848548","0.00120725107","0.00095525635","0.00082616208","0.00116409085","0.00075801458","0.00116101418","0.00091867068","0.00079452063","0.00107686294","0.00103535858","0.00106639988","0.00084380563","0.00121736237","0.00082526798","0.00072977292","0.00115396751","0.00088335786","0.00110532022","0.00101256131","0.00080120502","0.00075564579","0.00080205642","0.00073474753","0.00083828818","0.00076793870","0.00076430580","0.00082268903","0.00075364864","0.00086402557","0.00079151621","0.00071974524","0.00067379948","0.00069292940","0.00069223170","0.00060712725","0.00060764354","0.00070016495","0.00063667729","0.00059633631","0.00062629961","0.00058138051","0.00055401650","0.00054773919","0.00050281218","0.00052227063","0.00052552601","0.00051574684","0.00054166088","0.00053705688","0.00052063854","0.00049768877","0.00048951838","0.00048286373"],"hover_col_3":["252","252","251","253","250","251","253","250","249","254","248","252","251","253","252","252","252","251","253","250","252","252","251","252","251","253","251","253","250","249","254","250","249","254","248","252","251","253","252","251","253","250","247","249","254","248","252","252","251","253","250","253","250","249","249","254","251","253","250","247","246","249","254","252","250","249","254","247","248","250","249","251","253","250","252","251","249","254","253","250","249","254","248","252","251","253","250","251","253","250","252","248","251","253","250","254","247","251","253","254","248","250","249","254","252","251","253","252","252","251","252","251","252","252","251","252","251","248","245","250","251","246","253","251","248","253","253","253","253","253","250","248","250","250","250","246","252","248","252","248"]}}},{"type":"Circle","id":"abb3ba6ff344a1840dadd160cff51885","attributes":{"id":"abb3ba6ff344a1840dadd160cff51885","tags":[],"size":{"units":"screen","value":10},"visible":true,"line_alpha":{"units":"data","value":1},"fill_alpha":{"units":"data","value":0.5},"x":{"units":"data","field":"x"},"y":{"units":"data","field":"y"},"line_color":{"units":"data","field":"line_color"},"fill_color":{"units":"data","field":"fill_color"}}},{"type":"Circle","id":"13f9b4df36498573e6e9dc13bad26b7c","attributes":{"id":"13f9b4df36498573e6e9dc13bad26b7c","tags":[],"size":{"units":"screen","value":10},"visible":true,"line_alpha":{"units":"data","value":1},"fill_alpha":{"units":"data","value":0.5},"x":{"units":"data","field":"x"},"y":{"units":"data","field":"y"},"line_color":{"units":"data","value":"#e1e1e1"},"fill_color":{"units":"data","value":"#e1e1e1"}}},{"type":"Circle","id":"12815e44e4531df58f9a6125ed68af94","attributes":{"id":"12815e44e4531df58f9a6125ed68af94","tags":[],"size":{"units":"screen","value":10},"visible":true,"line_alpha":{"units":"data","value":1},"fill_alpha":{"units":"data","value":1},"x":{"units":"data","field":"x"},"y":{"units":"data","field":"y"},"line_color":{"units":"data","field":"line_color"},"fill_color":{"units":"data","field":"fill_color"}}},{"type":"GlyphRenderer","id":"38aa6fded24ed610cbd0b45246288233","attributes":{"id":"38aa6fded24ed610cbd0b45246288233","tags":[],"selection_glyph":null,"nonselection_glyph":{"type":"Circle","id":"13f9b4df36498573e6e9dc13bad26b7c"},"hover_glyph":{"type":"Circle","id":"12815e44e4531df58f9a6125ed68af94"},"name":null,"data_source":{"type":"ColumnDataSource","id":"415f624abea04f11af6462fa5e59288f"},"glyph":{"type":"Circle","id":"abb3ba6ff344a1840dadd160cff51885"}}},{"type":"LinearAxis","id":"35142dbf2d64d09516b4c79aabf6a994","attributes":{"id":"35142dbf2d64d09516b4c79aabf6a994","tags":[],"plot":{"type":"Plot","id":"e72a794710c043dd9a7f3dc0a56acf2c","subtype":"Figure"},"axis_label":"Mass [amu]","formatter":{"type":"BasicTickFormatter","id":"666c0e76547a198bb1a6469692a2bb76"},"ticker":{"type":"BasicTicker","id":"c819376efff2239ad33b571085da20e7"},"visible":true,"axis_label_text_font_size":"12pt"}},{"type":"BasicTickFormatter","id":"666c0e76547a198bb1a6469692a2bb76","attributes":{"id":"666c0e76547a198bb1a6469692a2bb76","tags":[]}},{"type":"BasicTicker","id":"c819376efff2239ad33b571085da20e7","attributes":{"id":"c819376efff2239ad33b571085da20e7","tags":[],"num_minor_ticks":5}},{"type":"Grid","id":"1563b53e83ead3a365a80480082fc193","attributes":{"id":"1563b53e83ead3a365a80480082fc193","tags":[],"dimension":0,"plot":{"type":"Plot","id":"e72a794710c043dd9a7f3dc0a56acf2c","subtype":"Figure"},"ticker":{"type":"BasicTicker","id":"c819376efff2239ad33b571085da20e7"}}},{"type":"LinearAxis","id":"213ba6284c149215d920d393df369a2c","attributes":{"id":"213ba6284c149215d920d393df369a2c","tags":[],"plot":{"type":"Plot","id":"e72a794710c043dd9a7f3dc0a56acf2c","subtype":"Figure"},"axis_label":"Probability","formatter":{"type":"BasicTickFormatter","id":"cc247b4ea9eaa7e8ef8f0a467e8f909d"},"ticker":{"type":"BasicTicker","id":"e3814377c5350154ec9f3314c1776438"},"visible":true,"axis_label_text_font_size":"12pt"}},{"type":"BasicTickFormatter","id":"cc247b4ea9eaa7e8ef8f0a467e8f909d","attributes":{"id":"cc247b4ea9eaa7e8ef8f0a467e8f909d","tags":[]}},{"type":"BasicTicker","id":"e3814377c5350154ec9f3314c1776438","attributes":{"id":"e3814377c5350154ec9f3314c1776438","tags":[],"num_minor_ticks":5}},{"type":"Grid","id":"5c1c912cd9dcf784a186044e3e82d02d","attributes":{"id":"5c1c912cd9dcf784a186044e3e82d02d","tags":[],"dimension":1,"plot":{"type":"Plot","id":"e72a794710c043dd9a7f3dc0a56acf2c","subtype":"Figure"},"ticker":{"type":"BasicTicker","id":"e3814377c5350154ec9f3314c1776438"}}},{"type":"Range1d","id":"572c294c778d899a7a2561414f097ce3","attributes":{"id":"572c294c778d899a7a2561414f097ce3","tags":[],"start":5728.89928658076,"end":5740.32508995352}},{"type":"Range1d","id":"63124c567c41f1de03c2f0fa51b1474f","attributes":{"id":"63124c567c41f1de03c2f0fa51b1474f","tags":[],"start":-0.00786116459653404,"end":0.120163515975592}}]}}},"debug":false},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="where-to-find-isospec" class="section level1">
+<h1>Where to find IsoSpec?</h1>
+<p>We have implemented IsoSpec in C++ so that nothing (but occasional <em>nasal deamons</em>) could stop our need for speed. We also made bindings to Python and R, so that any coder, a clingon and a federacy starship designer, could find its own way to run it. <a href="http://matteolacki.github.io/IsoSpec/">Clik here, for installation instructions and examples.</a></p>
+<p>We are also working on porting IsoSpec to <a href="https://www.openms.de">OpenMS</a>, for the better use of the mass spec community.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

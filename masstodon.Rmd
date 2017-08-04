@@ -45,7 +45,7 @@ MassTodon is our wooly response to the unforgiving cold of all these weeks you h
 
 If you are really interested, have a peep at it at [arXiv](https://arxiv.org/abs/1708.00234), where we describe in details how the whole approach works. If you are interested in testing it out first, we got this covered too, as you can [download the software and use it for free](https://matteolacki.github.io/MassTodonPy/).
 
-But maybe you want some incentive first? A scooby snack of some kind that could show you that it might be useful. Well, here's the algorithm's outcome for a 3+ [Substance P](http://wikipedia.moesalih.com/Substance_P)mass spectrum acquired on a Synapt instrument:
+But maybe you want some incentive first? A scooby snack of some kind that could show you that it might be useful. Well, here's the algorithm's outcome for a 3+ [Substance P](http://wikipedia.moesalih.com/Substance_P) mass spectrum acquired on a Synapt instrument:
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, fig.align='center'}
 library(rbokeh)
